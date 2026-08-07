@@ -30,8 +30,7 @@ jobs:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           IDO_APP_PASSWORD: ${{ secrets.IDO_APP_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
-        run: |
-          python checker.py
+        run: python checker.py
 
       - name: Commit and push changes if cache updated
         env:
