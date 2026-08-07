@@ -11,7 +11,7 @@ CACHE_FILE = 'events_cache.json'
 
 SENDER_EMAIL = os.getenv('SENDER_EMAIL', 'levido08@gmail.com').strip()
 IDO_APP_PASSWORD = os.getenv('IDO_APP_PASSWORD', '').strip()
-RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL', 'levido08@gmail.com').strip()
+RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL', 'levi0080@gmail.com').strip()
 
 def send_email(new_events):
   msg = MIMEMultipart()
