@@ -10,9 +10,9 @@ from playwright.sync_api import sync_playwright
 URL = 'https://lego-events.upsite.dev/events'
 CACHE_FILE = 'events_cache.json'
 
-SENDER_EMAIL = os.getenv('SENDER_EMAIL', 'levido08@gmail.com')
-IDO_APP_PASSWORD = os.getenv('IDO_APP_PASSWORD', '')
-RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL', 'levido08@gmail.com')
+SENDER_EMAIL = os.getenv('SENDER_EMAIL', 'levido08@gmail.com').strip()
+IDO_APP_PASSWORD = os.getenv('IDO_APP_PASSWORD', '').strip()
+RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL', 'levido08@gmail.com').strip()
 
 def send_email(new_events):
   msg = MIMEMultipart()
