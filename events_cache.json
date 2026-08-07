@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "title": "אירוע GO FULL NINJA  קניון שער הצפון",
+        "link": "https://lego-events.upsite.dev/events/NINJAGO_SHAAR",
+        "dates": "11-13.8.2026",
+        "description": "חוגגים 15 שנה ל-NINJAGO!צעדו בדרך הנינג'ה ב-LEGO® STORE שער הצפון, קרית אתא!בלעדי לחברי LEGO® VIP CLUB ולמצטרפים חדשים!, אירוע הנינג'ה הגדול של השנה נ..."
+    },
+    {
+        "title": "אירוע השקה וואן פיס דיזנגוף",
+        "link": "https://lego-events.upsite.dev/events/ONE_PIECE_DIZI",
+        "dates": "17.8.2026 | 08:00-16:00",
+        "description": "BUILD THE GRAND LINE ההרפתקה ממשיכה!פסטיבל LEGO® ONE PIECE חוזר לדיזנגוף סנטר!בלעדי לחברי LEGO® VIP CLUB ולמצטרפים חדשים! אירוע ההשקה הרשמי והחווייתי ..."
+    },
+    {
+        "title": "אירוע רכבים BUILD YOUR DREAM RIDE קניון  שער הצפון",
+        "link": "https://lego-events.upsite.dev/events/Vehicles_SHAAR",
+        "dates": "18-20.8.2026",
+        "description": "בונים, מאיצים ומנצחים!מעלים הילוך ב- LEGO® STORE!בלעדי לחברי LEGO® VIP CLUB ולמצטרפים חדשים! אירוע המכוניות הגדול של הקיץ!חובבי רכבים ומרוצים? בואו לה..."
+    }
+]
