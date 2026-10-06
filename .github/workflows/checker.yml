@@ -27,4 +27,4 @@ jobs:
           IDO_APP_PASSWORD: ${{ secrets.IDO_APP_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
         run: |
-          python bot.py # שים לב לשנות כאן אם קראת לקובץ שלך בשם אחר (למשל main.py)
+              python checker.py
