@@ -1,5 +1,6 @@
 import json
 import os
+import subprocess
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -78,7 +79,6 @@ def get_events_list():
                 description = description_tag.get_text(strip=True) if description_tag else ''
                 title = title_tag.get_text(strip=True)
 
-                # --- כניסה לעמוד הפנימי לבדיקת סטטוס ההרשמה ---
                 registration_status = 'לא ידוע'
                 sub_page = browser.new_page()
                 try:
@@ -88,7 +88,6 @@ def get_events_list():
                     
                     page_text = sub_soup.get_text()
                     
-                    # בדיקה לפי הטקסטים שהופיעו בצילומי המסך
                     if 'ההרשמה לאירוע תיפתח בקרוב' in page_text:
                         registration_status = 'ההרשמה תיפתח בקרוב (סגור)'
                     elif 'אימות מספר טלפון' in page_text or 'מספר טלפון נייד' in page_text:
@@ -124,12 +123,28 @@ def save_cache(events):
         json.dump(events, f, ensure_ascii=False, indent=4)
 
 
+def commit_cache_to_github():
+    try:
+        subprocess.run(["git", "config", "--global", "user.name", "github-actions[bot]"], check=True)
+        subprocess.run(["git", "config", "--global", "user.email", "github-actions[bot]@users.noreply.github.com"], check=True)
+        subprocess.run(["git", "add", CACHE_FILE], check=True)
+        
+        status_result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
+        if status_result.stdout.strip():
+            subprocess.run(["git", "commit", "-m", "Update events cache automatically [skip ci]"], check=True)
+            subprocess.run(["git", "push"], check=True)
+            print("הקאש עודכן והועלה בהצלחה לגיטהאב!")
+        else:
+            print("אין שינויים בקאש לעדכון.")
+    except Exception as e:
+        print(f"שגיאה בעדכון הקאש בגיטהאב: {e}")
+
+
 def main():
     print('Checking for Lego events updates and registration status...')
     current_events = get_events_list()
     cached_events = load_cache()
 
-    # המרה למילון שנוח לחפש לפיו לפי לינק
     cached_dict = {e['link']: e for e in cached_events}
 
     new_events = []
@@ -138,10 +153,8 @@ def main():
     for event in current_events:
         link = event['link']
         if link not in cached_dict:
-            # אירוע חדש לגמרי שלא היה בזיכרון
             new_events.append(event)
         else:
-            # אירוע קיים - נבדוק האם סטטוס ההרשמה השתנה
             old_status = cached_dict[link].get('registration_status')
             current_status = event['registration_status']
             
@@ -149,12 +162,10 @@ def main():
                 print(f"שינוי סטטוס באירוע '{event['title']}': מ-'{old_status}' ל-'{current_status}'")
                 status_changed_events.append(event)
 
-    # טיפול באירועים חדשים
     if new_events:
         print(f'>>> Found {len(new_events)} new events! <<<')
         send_email(new_events, is_new=True)
 
-    # טיפול באירועים קיימים שהסטטוס שלהם השתנה (למשל נפתחה ההרשמה)
     if status_changed_events:
         print(f'>>> Found {len(status_changed_events)} events with status changes! <<<')
         send_email(status_changed_events, is_new=False)
@@ -162,8 +173,8 @@ def main():
     if not new_events and not status_changed_events:
         print('No New Events or Status Changes Found.')
 
-    # שומרים תמיד את המצב העדכני בקש
     save_cache(current_events)
+    commit_cache_to_github()
 
 
 if __name__ == '__main__':

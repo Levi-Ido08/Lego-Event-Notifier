@@ -1,38 +1,30 @@
 [
     {
-        "title": "?What's your Hero Story",
-        "link": "https://lego-events.upsite.dev/events/whats-your-hero-story",
-        "dates": "28-29.9.2026",
-        "description": "WHAT'S YOUR HERO STORY?פסטיבל גיבורי העל של LEGO® STORE מגיע באופן בלעדי לסינמה סיטי ראשון לציון!בלעדי לחברי LEGO® VIP CLUB ולמצטרפים חדשים, בואו להעי..."
-    },
-    {
-        "title": "ערב השקה: LEGO® Star Wars™ Executive Super Star Destroyer",
-        "link": "https://lego-events.upsite.dev/events/-lego-star-wars-executive-super-star-destroyer",
-        "dates": "1.10.2026 | 16:00-18:00",
-        "description": "⭐A NEW FLAGSHIP ARRIVESערב מיוחד וחד-פעמי למעריצי LEGO® Star Wars™ערב אחד, גלקסיה אחת, כל הקהילה במקום אחד. ב-1.10 LEGO® STORE דיזנגוף סנטר הופך לגלק..."
-    },
-    {
         "title": "בונים, לוקחים ומשחקים את דרקון LEGO® NINJAGO®",
         "link": "https://lego-events.upsite.dev/events/-lego-ninjago",
         "dates": "8.10.2026 | 11:00-16:00",
-        "description": "MAKE & TAKE ב-LEGO® STORE!🐉 WHAT'S YOUR HERO STORY? BUILD IT, TAKE IT!בואו לספר לנו את סיפור הגיבור שלכםוקבלו את דרקון ®LEGO® NINJAGO בפעילות חווייתי..."
+        "description": "MAKE & TAKE ב-LEGO® STORE!🐉 WHAT'S YOUR HERO STORY? BUILD IT, TAKE IT!בואו לספר לנו את סיפור הגיבור שלכםוקבלו את דרקון ®LEGO® NINJAGO בפעילות חווייתי...",
+        "registration_status": "ההרשמה פתוחה!"
     },
     {
         "title": "בונים, לוקחים ומשחקים את MAGENTA CANDLE",
         "link": "https://lego-events.upsite.dev/events/-magenta-candle",
         "dates": "20.10.2026 | 11:00-16:00",
-        "description": "MAKE & TAKE ב-LEGO® STORE!🕯️ MAGENTA FLOWER CANDLE – BUILD IT, TAKE IT!בואו לשתף אותנו במה שמאיר לכם את היום – וקבלו את נר הפרח MAGENTA FLOWER CANDLE..."
+        "description": "MAKE & TAKE ב-LEGO® STORE!🕯️ MAGENTA FLOWER CANDLE – BUILD IT, TAKE IT!בואו לשתף אותנו במה שמאיר לכם את היום – וקבלו את נר הפרח MAGENTA FLOWER CANDLE...",
+        "registration_status": "ההרשמה פתוחה!"
     },
     {
         "title": "Micro Peace Lilly",
         "link": "https://lego-events.upsite.dev/events/micro-peace-lilly",
         "dates": "29.10.2026 | 12:00-17:00",
-        "description": "בונים, לוקחים ומשחקים!מביאים את הטבע הירוק ל- LEGO® STOREבלעדי לחברי LEGO® VIP CLUB ולמצטרפים חדשים, חגיגת בנייה ירוקה ופרחונית לכל המשפחה!אנחנו מזמינ..."
+        "description": "בונים, לוקחים ומשחקים!מביאים את הטבע הירוק ל- LEGO® STOREבלעדי לחברי LEGO® VIP CLUB ולמצטרפים חדשים, חגיגת בנייה ירוקה ופרחונית לכל המשפחה!אנחנו מזמינ...",
+        "registration_status": "ההרשמה תיפתח בקרוב (סגור)"
     },
     {
         "title": "בונים, לוקחים ומשחקים את HALLOWEEN",
         "link": "https://lego-events.upsite.dev/events/-halloween",
         "dates": "29.10.2026 | 12:00-17:00",
-        "description": "GHOST STREET HALLOWEEN ב-LEGO® STORE דיזנגוף סנטר!👻 MAKE IT HERE AND TAKE IT HOMEחוויה מפחידה ומהנה, בלעדית ל-LEGO® Store דיזנגוף סנטר:בונים בעצמכם א..."
+        "description": "GHOST STREET HALLOWEEN ב-LEGO® STORE דיזנגוף סנטר!👻 MAKE IT HERE AND TAKE IT HOMEחוויה מפחידה ומהנה, בלעדית ל-LEGO® Store דיזנגוף סנטר:בונים בעצמכם א...",
+        "registration_status": "ההרשמה תיפתח בקרוב (סגור)"
     }
 ]
