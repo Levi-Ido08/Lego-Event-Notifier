@@ -12,13 +12,15 @@ CACHE_FILE = 'events_cache.json'
 
 SENDER_EMAIL = os.getenv('SENDER_EMAIL', 'levido08@gmail.com').strip()
 IDO_APP_PASSWORD = os.getenv('IDO_APP_PASSWORD', '').strip()
-RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL', 'levi0080@gmail.com').strip()
+
+RECEIVER_EMAIL_ENV = os.getenv('RECEIVER_EMAIL', 'levi0080@gmail.com, orle@albar.co.il')
+RECEIVER_EMAILS = [email.strip() for email in RECEIVER_EMAIL_ENV.split(',') if email.strip()]
 
 def send_email(updates_list, is_new=True):
     msg = MIMEMultipart()
     msg['Subject'] = 'עדכון חדש: אירועי לגו - שינוי בסטטוס הרשמה' if not is_new else 'עדכון חדש: אירועי לגו חדשים'
     msg['From'] = SENDER_EMAIL
-    msg['To'] = RECEIVER_EMAIL
+    msg['To'] = ", ".join(RECEIVER_EMAILS)
 
     body = '<div dir="rtl" style="text-align: right; font-family: Arial, sans-serif;">'
     body += 'התגלו העדכונים הבאים באירועי הלגו:<br><br>'
@@ -39,8 +41,8 @@ def send_email(updates_list, is_new=True):
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
             server.login(SENDER_EMAIL, IDO_APP_PASSWORD)
-            server.send_message(msg)
-        print('המייל נשלח בהצלחה!')
+            server.sendmail(SENDER_EMAIL, RECEIVER_EMAILS, msg.as_string())
+        print('המייל נשלח בהצלחה לכל הנמענים!')
     except Exception as e:
         print(f'שגיאה בשליחת המייל: {e}')
 
