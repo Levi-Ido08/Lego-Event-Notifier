@@ -17,35 +17,35 @@ RECEIVER_EMAIL_ENV = os.getenv('RECEIVER_EMAIL', 'levi0080@gmail.com, orle@albar
 RECEIVER_EMAILS = [email.strip() for email in RECEIVER_EMAIL_ENV.split(',') if email.strip()]
 
 def send_email(updates_list, is_new=True):
-    msg = MIMEMultipart()
-    msg['Subject'] = 'עדכון חדש: אירועי לגו - שינוי בסטטוס הרשמה' if not is_new else 'עדכון חדש: אירועי לגו חדשים'
-    msg['From'] = SENDER_EMAIL
-    msg['To'] = ", ".join(RECEIVER_EMAILS)
+    for receiver in RECEIVER_EMAILS:
+        msg = MIMEMultipart()
+        msg['Subject'] = 'עדכון חדש: אירועי לגו - שינוי בסטטוס הרשמה' if not is_new else 'עדכון חדש: אירועי לגו חדשים'
+        msg['From'] = SENDER_EMAIL
+        msg['To'] = receiver
 
-    body = '<div dir="rtl" style="text-align: right; font-family: Arial, sans-serif;">'
-    body += 'התגלו העדכונים הבאים באירועי הלגו:<br><br>'
+        body = '<div dir="rtl" style="text-align: right; font-family: Arial, sans-serif;">'
+        body += 'התגלו העדכונים הבאים באירועי הלגו:<br><br>'
 
-    for event in updates_list:
-        body += f"כותרת: {event['title']}<br>"
-        body += f"תאריכים: {event['dates']}<br>"
-        body += f"סטטוס הרשמה: <b>{event['registration_status']}</b><br>"
-        body += f"תיאור: {event['description']}<br>"
-        body += f"לינק: {event['link']}<br><br>"
-        body += '-' * 30 + '<br>'
+        for event in updates_list:
+            body += f"כותרת: {event['title']}<br>"
+            body += f"תאריכים: {event['dates']}<br>"
+            body += f"סטטוס הרשמה: <b>{event['registration_status']}</b><br>"
+            body += f"תיאור: {event['description']}<br>"
+            body += f"לינק: {event['link']}<br><br>"
+            body += '-' * 30 + '<br>'
 
-    body += '</div>'
+        body += '</div>'
 
-    msg.attach(MIMEText(body, 'html', 'utf-8'))
+        msg.attach(MIMEText(body, 'html', 'utf-8'))
 
-    try:
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
-            server.starttls()
-            server.login(SENDER_EMAIL, IDO_APP_PASSWORD)
-            server.sendmail(SENDER_EMAIL, RECEIVER_EMAILS, msg.as_string())
-        print('המייל נשלח בהצלחה לכל הנמענים!')
-    except Exception as e:
-        print(f'שגיאה בשליחת המייל: {e}')
-
+        try:
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                server.starttls()
+                server.login(SENDER_EMAIL, IDO_APP_PASSWORD)
+                server.sendmail(SENDER_EMAIL, [receiver], msg.as_string())
+            print(f'המייל נשלח בהצלחה ל-{receiver}!')
+        except Exception as e:
+            print(f'שגיאה בשליחת המייל ל-{receiver}: {e}')
 def get_events_list():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
